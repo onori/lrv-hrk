@@ -1,5 +1,8 @@
 <?php
 
+$pg_url = parse_url(env('DATABASE_URL'));
+$redis_url = parse_url(env('REDIS_URL'));
+
 return [
 
     /*
@@ -66,10 +69,10 @@ return [
 
         'pgsql' => [
             'driver'   => 'pgsql',
-            'host'     => env('DB_HOST', 'localhost'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host'     => $pg_url['host'],
+            'database' => str_replace('/', '', $pg_url['path']),
+            'username' => $pg_url['user'],
+            'password' => $pg_url['pass'],
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
@@ -116,8 +119,10 @@ return [
         'cluster' => false,
 
         'default' => [
-            'host'     => '127.0.0.1',
-            'port'     => 6379,
+            'host'     => $redis_url['host'],
+            'port'     => $redis_url['port'],
+            'username' => $redis_url['user'],
+            'password' => $redis_url['pass'],
             'database' => 0,
         ],
 

@@ -1,0 +1,32 @@
+{
+  "name": "laravel on heroku",
+  "description": "Laravel apps demo",
+  "repository": "https://github.com/onori/lrv-hrk.git",
+  "keywords": ["laravel", "php"],
+  "env": {
+      "APP_DEBUG": {
+          "description": "debug setting [TRUE or FALSE]",
+          "value":"FALSE"
+      },
+      "APP_KEY" : {
+          "description": "set secret key",
+          "generator": "secret"
+      },
+      "DB_CONNECTION" : {
+          "description": "default connection DB",
+          "value":"pgsql"
+      },
+      "CACHE_DRIVER": {
+          "description":"",
+          "value":"redis"
+      },
+      "SESSION_DRIVER": {
+          "description":"",
+          "value":"redis"
+      }
+  },
+  "addons": [
+      "heroku-postgresql",
+      "heroku-redis"
+  ]
+}

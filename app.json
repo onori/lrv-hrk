@@ -4,6 +4,10 @@
   "repository": "https://github.com/onori/lrv-hrk.git",
   "keywords": ["laravel", "php"],
   "env": {
+      "APP_ENV": {
+          "description": "APP ENV [production, staging, local]",
+          "value": "production"
+      },
       "APP_DEBUG": {
           "description": "debug setting [TRUE or FALSE]",
           "value":"FALSE"

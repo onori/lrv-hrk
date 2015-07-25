@@ -122,10 +122,10 @@ return [
         'cluster' => false,
 
         'default' => [
-            'host'     => env('REDIS_HOST', $redis_url['host']);
-            'port'     => env('REDIS_PORT', $redis_url['port']);
-            'username' => env('REDIS_USERNAME', $redis_url['user']);
-            'password' => env('REDIS_PASSWORD', $redis_url['pass']);
+            'host'     => env('REDIS_HOST', $redis_url['host']),
+            'port'     => env('REDIS_PORT', $redis_url['port']),
+            'username' => env('REDIS_USERNAME', $redis_url['user']),
+            'password' => env('REDIS_PASSWORD', $redis_url['pass']),
             'database' => 0,
         ],
 

@@ -4,6 +4,8 @@ if (env('APP_ENV') === 'production')
 {
     $pg_url = parse_url(env('DATABASE_URL'));
     $redis_url = parse_url(env('REDIS_URL'));
+
+    dd($redis_url);
 }
 
 return [

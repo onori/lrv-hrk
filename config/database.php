@@ -1,7 +1,10 @@
 <?php
 
-$pg_url = parse_url(env('DATABASE_URL'));
-$redis_url = parse_url(env('REDIS_URL'));
+if (env('APP_ENV') === 'production')
+{
+    $pg_url = parse_url(env('DATABASE_URL'));
+    $redis_url = parse_url(env('REDIS_URL'));
+}
 
 return [
 
@@ -69,10 +72,10 @@ return [
 
         'pgsql' => [
             'driver'   => 'pgsql',
-            'host'     => $pg_url['host'],
-            'database' => str_replace('/', '', $pg_url['path']),
-            'username' => $pg_url['user'],
-            'password' => $pg_url['pass'],
+            'host'      => env('DB_HOST', $pg_url['host']),
+            'database'  => env('DB_DATABASE', str_replace('/', '', $pg_url['path'])),
+            'username'  => env('DB_USERNAME', $pg_url['user']),
+            'password'  => env('DB_PASSWORD', $pg_url['pass']),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
@@ -119,10 +122,10 @@ return [
         'cluster' => false,
 
         'default' => [
-            'host'     => $redis_url['host'],
-            'port'     => $redis_url['port'],
-            'username' => $redis_url['user'],
-            'password' => $redis_url['pass'],
+            'host'     => env('REDIS_HOST', $redis_url['host']);
+            'port'     => env('REDIS_PORT', $redis_url['port']);
+            'username' => env('REDIS_USERNAME', $redis_url['user']);
+            'password' => env('REDIS_PASSWORD', $redis_url['pass']);
             'database' => 0,
         ],
 

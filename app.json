@@ -10,7 +10,7 @@
       },
       "APP_KEY" : {
           "description": "set secret key",
-          "generator": "secret"
+          "value": "SomeRandomStringSomeRandomString"
       },
       "DB_CONNECTION" : {
           "description": "default connection DB",

@@ -1,5 +1,8 @@
 <?php
 
+$pg_url = parse_url(env('DATABASE_URL'));
+$redis_url = parse_url(env('REDIS_URL'));
+
 return [
 
     /*

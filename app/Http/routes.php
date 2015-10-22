@@ -11,6 +11,32 @@
 |
 */
 
+/**
+ * not env=local force HTTPS!
+ */
+if ( ! App::environment('local')) {
+    URL::forceSchema('https');
+}
+
 Route::get('/', function () {
-    return view('welcome');
+    if ( !Auth::user() ) {
+        return redirect('auth/login');
+    } else {
+        return redirect('home');
+    }
+});
+
+/**
+*   Auth & Register
+*/
+Route::group(['prefix' => 'auth'], function() {
+    Route::get('/login', function () {
+        return view('auth.login');
+    });
+    Route::post('/login','Auth\AuthController@postLogin');
+
+    Route::get('/register', function () {
+        return view('auth.register');
+    });
+    Route::post('auth/register', 'Auth\AuthController@postRegister');
 });

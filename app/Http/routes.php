@@ -19,11 +19,12 @@ if ( ! App::environment('local')) {
 }
 
 Route::get('/', function () {
-    if ( !Auth::user() ) {
-        return redirect('auth/login');
-    } else {
-        return redirect('home');
-    }
+    return view('welcome');
+    // if ( !Auth::user() ) {
+    //     return redirect('auth/login');
+    // } else {
+    //     return redirect('home');
+    // }
 });
 
 /**
